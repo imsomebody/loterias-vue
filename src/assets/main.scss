@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./colors.scss";
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}

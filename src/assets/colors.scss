@@ -1,0 +1,13 @@
+$quina-color: #9481c4;
+$lotofacil-color: #c77ec5;
+
+$lotto-colors: (
+  quina: $quina-color,
+  lotofacil: $lotofacil-color,
+);
+
+@each $name, $color in $lotto-colors {
+  .text-#{$name} {
+    color: $color !important;
+  }
+}
