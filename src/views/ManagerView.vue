@@ -30,6 +30,7 @@
             type="number"
             :min="lotto.profile.minBetSize"
             :max="lotto.profile.maxBetSize"
+            :disabled="lotto.profile.minBetSize === lotto.profile.maxBetSize"
           />
         </div>
         <div class="field mt-3">
