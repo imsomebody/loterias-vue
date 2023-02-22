@@ -11,7 +11,13 @@
     </span>
   </header>
   <v-expansion-panels variant="accordion" v-if="lotto">
-    <v-expansion-panel title="Descrição" :text="lotto.profile.description">
+    <v-expansion-panel title="Descrição">
+      <v-expansion-panel-text>
+        <div
+          class="t-flex t-flex-col t-flex-wrap t-gap-1"
+          v-html="lotto.profile.description"
+        ></div>
+      </v-expansion-panel-text>
     </v-expansion-panel>
     <v-expansion-panel title="Configuração da Aposta">
       <v-expansion-panel-text>
@@ -25,6 +31,13 @@
             :min="lotto.profile.minBetSize"
             :max="lotto.profile.maxBetSize"
           />
+        </div>
+        <div class="field mt-3">
+          <label>Algorítmo</label>
+          <v-radio-group v-model="algorithm">
+            <v-radio label="Pseudoaleatório" value="random"></v-radio>
+            <v-radio disabled label="Redução" value="reduce-games"></v-radio>
+          </v-radio-group>
         </div>
       </v-expansion-panel-text>
     </v-expansion-panel>
@@ -59,6 +72,7 @@ const lotto = computed(() => managerStore.selected as Lottery);
 
 const betSize = ref(lotto.value?.profile.minBetSize);
 const generatedScheme = ref([] as number[]);
+const algorithm = ref("random");
 
 function generate() {
   generatedScheme.value = createGame(lotto.value.profile, betSize.value);
